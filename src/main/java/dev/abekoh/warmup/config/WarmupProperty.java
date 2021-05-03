@@ -8,5 +8,5 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties(prefix = "warmup")
 public class WarmupProperty {
-  private Integer warmupCount;
+  private Integer requestCount;
 }

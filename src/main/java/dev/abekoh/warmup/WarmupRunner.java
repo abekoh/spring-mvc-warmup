@@ -25,7 +25,7 @@ public class WarmupRunner implements ApplicationRunner {
 
   @Override
   public void run(ApplicationArguments args) throws Exception {
-    if (warmupProperty.getWarmupCount() == null || warmupProperty.getWarmupCount() <= 0) {
+    if (warmupProperty.getRequestCount() == null || warmupProperty.getRequestCount() <= 0) {
       log.info("skip warmup");
       return;
     }
@@ -45,7 +45,7 @@ public class WarmupRunner implements ApplicationRunner {
         .bodyValue(request)
         .retrieve()
         .bodyToMono(JsonNode.class)
-        .repeat(warmupProperty.getWarmupCount())
+        .repeat(warmupProperty.getRequestCount())
         .blockLast();
     log.info("finish warmup");
   }

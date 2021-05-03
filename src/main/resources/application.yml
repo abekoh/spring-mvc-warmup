@@ -1,3 +1,5 @@
 spring:
   main:
     cloud-platform: kubernetes
+warmup:
+  request-count: 30000

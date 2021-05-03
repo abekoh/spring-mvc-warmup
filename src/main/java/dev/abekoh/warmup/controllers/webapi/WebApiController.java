@@ -5,11 +5,11 @@ import dev.abekoh.warmup.domain.types.Name;
 import dev.abekoh.warmup.usecases.UserAddRequest;
 import dev.abekoh.warmup.usecases.UserUsecase;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("api/users")
 public class WebApiController {
 
   private final UserUsecase usecase;
@@ -18,6 +18,9 @@ public class WebApiController {
     this.usecase = usecase;
   }
 
+  @PostMapping(
+      produces = MediaType.APPLICATION_JSON_VALUE,
+      consumes = MediaType.APPLICATION_JSON_VALUE)
   public WebApiUserAddResponse add(WebApiUserAddRequest request) {
     var usecaseResponse =
         usecase.add(

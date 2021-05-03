@@ -17,7 +17,7 @@ public class UserInteractor implements UserUsecase {
   }
 
   public UserAddResponse add(UserAddRequest request) {
-    User user = User.create(request.getName(), request.getBirthday());
+    User user = User.create(request.getName(), request.getBirthday(), request.isDummy());
     repository.set(user);
     return UserAddResponse.from(user);
   }

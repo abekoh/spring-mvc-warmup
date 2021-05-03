@@ -31,6 +31,6 @@ public class WebApiController {
   @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
   @ExceptionHandler({NullPointerException.class})
   public WebApiUserAddResponse handleError() {
-      return WebApiUserAddResponse.from("some required arguments are not found.")
+    return WebApiUserAddResponse.failedBecause("some required arguments are not found.");
   }
 }

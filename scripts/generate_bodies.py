@@ -27,7 +27,7 @@ if __name__ == "__main__":
     while True:
         result = {}
         result["method"] = "POST"
-        result["url"] = "http://localhost:38080/api/users"
+        result["url"] = "http://localhost:30080/api/users"
         # 1970-01-01 - 2020-12-31
         rand_date = datetime.fromtimestamp(random.randint(0, 1609426799))
         body_dic = {

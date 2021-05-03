@@ -1,4 +1,4 @@
-# spring-mvc-warmup
+# spring-warmup-on-k8s
 
 Spring + Kubernetesでウォームアップ→完了後サービスイン、を行うサンプル
 

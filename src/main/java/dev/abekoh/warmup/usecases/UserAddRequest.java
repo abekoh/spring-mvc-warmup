@@ -16,8 +16,8 @@ public class UserAddRequest {
   private final boolean isDummy;
 
   private UserAddRequest(Name name, Birthday birthday, boolean isDummy) {
-    Objects.nonNull(name);
-    Objects.nonNull(birthday);
+    Objects.requireNonNull(name);
+    Objects.requireNonNull(birthday);
     this.name = name;
     this.birthday = birthday;
     this.isDummy = isDummy;

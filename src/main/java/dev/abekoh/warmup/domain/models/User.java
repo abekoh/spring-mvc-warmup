@@ -16,20 +16,23 @@ public class User {
 
   private final Birthday birthday;
 
-  private User(UserId userId, Name name, Birthday birthday) {
+  private final boolean isDummy;
+
+  private User(UserId userId, Name name, Birthday birthday, boolean isDummy) {
     Objects.nonNull(userId);
     Objects.nonNull(name);
     Objects.nonNull(birthday);
     this.userId = userId;
     this.name = name;
     this.birthday = birthday;
+    this.isDummy = isDummy;
   }
 
-  public static User from(UserId userId, Name name, Birthday birthday) {
-    return new User(userId, name, birthday);
+  public static User from(UserId userId, Name name, Birthday birthday, boolean isDummy) {
+    return new User(userId, name, birthday, isDummy);
   }
 
-  public static User create(Name name, Birthday birthday) {
-    return new User(UserId.create(), name, birthday);
+  public static User create(Name name, Birthday birthday, boolean isDummy) {
+    return new User(UserId.create(), name, birthday, isDummy);
   }
 }

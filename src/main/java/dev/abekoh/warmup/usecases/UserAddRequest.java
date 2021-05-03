@@ -13,14 +13,21 @@ public class UserAddRequest {
 
   private final Birthday birthday;
 
-  private UserAddRequest(Name name, Birthday birthday) {
+  private final boolean isDummy;
+
+  private UserAddRequest(Name name, Birthday birthday, boolean isDummy) {
     Objects.nonNull(name);
     Objects.nonNull(birthday);
     this.name = name;
     this.birthday = birthday;
+    this.isDummy = isDummy;
   }
 
   public static UserAddRequest from(Name name, Birthday birthday) {
-    return new UserAddRequest(name, birthday);
+    return new UserAddRequest(name, birthday, false);
+  }
+
+  public static UserAddRequest from(Name name, Birthday birthday, boolean isDummy) {
+    return new UserAddRequest(name, birthday, isDummy);
   }
 }

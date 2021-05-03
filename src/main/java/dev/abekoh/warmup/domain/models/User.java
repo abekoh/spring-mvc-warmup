@@ -19,9 +19,9 @@ public class User {
   private final boolean isDummy;
 
   public User(UserId userId, Name name, Birthday birthday, boolean isDummy) {
-    Objects.nonNull(userId);
-    Objects.nonNull(name);
-    Objects.nonNull(birthday);
+    Objects.requireNonNull(userId);
+    Objects.requireNonNull(name);
+    Objects.requireNonNull(birthday);
     this.userId = userId;
     this.name = name;
     this.birthday = birthday;

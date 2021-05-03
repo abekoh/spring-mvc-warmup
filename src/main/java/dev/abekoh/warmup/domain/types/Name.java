@@ -11,14 +11,14 @@ public class Name {
 
   private final String lastName;
 
-  public Name(String firstName, String lastName) {
+  private Name(String firstName, String lastName) {
     Objects.requireNonNull(firstName);
     Objects.requireNonNull(lastName);
     this.firstName = firstName;
     this.lastName = lastName;
   }
 
-  private static Name from(String firstName, String lastName) {
+  public static Name from(String firstName, String lastName) {
     return new Name(firstName, lastName);
   }
 }

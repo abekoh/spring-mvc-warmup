@@ -15,7 +15,7 @@ public class Birthday {
     this.date = date;
   }
 
-  public static Birthday from(LocalDate date) {
-    return new Birthday(date);
+  public static Birthday from(int year, int month, int date) {
+    return new Birthday(LocalDate.of(year, month, date));
   }
 }

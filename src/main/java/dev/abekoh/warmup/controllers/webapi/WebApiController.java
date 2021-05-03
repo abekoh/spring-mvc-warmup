@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
+
 @Slf4j
 @RestController
 @RequestMapping("api/users")
@@ -34,7 +36,8 @@ public class WebApiController {
               UserAddRequest.from(
                   Name.from(request.getFirstName(), request.getLastName()),
                   Birthday.from(
-                      request.getBirthYear(), request.getBirthMonth(), request.getBirthDate())));
+                      request.getBirthYear(), request.getBirthMonth(), request.getBirthDate()),
+                  Optional.ofNullable(request.getIsDummy()).orElse(false)));
       return ResponseEntity.ok(WebApiUserAddResponse.from(usecaseResponse));
     } catch (NullPointerException exception) {
       return ResponseEntity.badRequest()

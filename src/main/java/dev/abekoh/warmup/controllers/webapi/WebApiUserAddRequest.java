@@ -16,4 +16,13 @@ public class WebApiUserAddRequest {
   private final Integer birthMonth;
 
   private final Integer birthDate;
+
+  private final Boolean isDummy;
+
+  public Boolean getIsDummy() {
+    if (isDummy == null) {
+      return false;
+    }
+    return isDummy;
+  }
 }

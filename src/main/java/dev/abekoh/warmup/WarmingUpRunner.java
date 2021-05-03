@@ -1,4 +1,4 @@
-package dev.abekoh.warmup.config;
+package dev.abekoh.warmup;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import dev.abekoh.warmup.controllers.webapi.WebApiUserAddRequest;

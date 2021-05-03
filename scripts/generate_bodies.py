@@ -1,9 +1,9 @@
+import argparse
+import base64
+import json
+import random
 import requests
 from datetime import datetime
-import random
-import json
-import base64
-import argparse
 
 
 def generate_name_list(url):
@@ -20,7 +20,6 @@ FIRST_NAME_LIST = generate_name_list(
     "https://raw.githubusercontent.com/smashew/NameDatabases/master/NamesDatabases/first%20names/us.txt"
 )
 
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--dummy", help="with dummy request", action="store_true")
@@ -28,7 +27,7 @@ if __name__ == "__main__":
     while True:
         result = {}
         result["method"] = "POST"
-        result["url"] = "http://localhost:8080/api/users"
+        result["url"] = "http://localhost:38080/api/users"
         # 1970-01-01 - 2020-12-31
         rand_date = datetime.fromtimestamp(random.randint(0, 1609426799))
         body_dic = {

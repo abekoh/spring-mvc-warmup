@@ -41,7 +41,7 @@ def generate_request():
         result["body"] = base64.b64encode(json.dumps(body_dic).encode()).decode()
         print(json.dumps(result))
     except BrokenPipeError:
-        print("stop generating", file=sys.stderr)
+        print("stop request generating", file=sys.stderr)
         sys.exit(0)
 
 

@@ -21,23 +21,21 @@ public class WarmingUpRunner implements ApplicationRunner {
 
   @Override
   public void run(ApplicationArguments args) throws Exception {
-    var resp =
-        webClient
-            .post()
-            .contentType(MediaType.APPLICATION_JSON)
-            .bodyValue(
-                WebApiUserAddRequest.builder()
-                    .firstName("Kotaro")
-                    .lastName("Abe")
-                    .birthYear(1993)
-                    .birthMonth(6)
-                    .birthDate(25)
-                    .isDummy(true)
-                    .build())
-            .retrieve()
-            .bodyToMono(JsonNode.class)
-            .repeat(30000)
-            .blockLast();
-    log.info("resp: {}", resp);
+    webClient
+        .post()
+        .contentType(MediaType.APPLICATION_JSON)
+        .bodyValue(
+            WebApiUserAddRequest.builder()
+                .firstName("Kotaro")
+                .lastName("Abe")
+                .birthYear(1993)
+                .birthMonth(6)
+                .birthDate(25)
+                .isDummy(true)
+                .build())
+        .retrieve()
+        .bodyToMono(JsonNode.class)
+        .repeat(30000)
+        .blockLast();
   }
 }

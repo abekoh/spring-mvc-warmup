@@ -18,6 +18,8 @@ spec:
       containers:
         - name: warmup-sandbox
           image: bcky/warmup-sandbox:latest
+          args:
+            - --spring.profiles.active=prod
           ports:
             - containerPort: 8080
           livenessProbe:

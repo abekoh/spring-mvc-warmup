@@ -1,7 +1,10 @@
 package dev.abekoh.warmup.domain.types;
 
+import lombok.ToString;
+
 import java.util.Objects;
 
+@ToString
 public class Name {
 
   private final String firstName;

@@ -1,8 +1,11 @@
 package dev.abekoh.warmup.domain.types;
 
+import lombok.ToString;
+
 import java.util.Objects;
 import java.util.UUID;
 
+@ToString
 public class UserId {
 
   private final String id;

@@ -3,7 +3,9 @@ package dev.abekoh.warmup.domain.models;
 import dev.abekoh.warmup.domain.types.Birthday;
 import dev.abekoh.warmup.domain.types.Name;
 import dev.abekoh.warmup.domain.types.UserId;
+import lombok.ToString;
 
+@ToString
 public class User {
 
   private final UserId userId;

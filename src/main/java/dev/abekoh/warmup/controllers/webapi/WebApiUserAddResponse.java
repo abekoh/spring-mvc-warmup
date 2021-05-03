@@ -24,12 +24,12 @@ public class WebApiUserAddResponse {
   }
 
   public static WebApiUserAddResponse from(UserAddResponse userAddResponse) {
-    Objects.nonNull(userAddResponse);
+    Objects.requireNonNull(userAddResponse);
     return new WebApiUserAddResponse(true, userAddResponse, null);
   }
 
   public static WebApiUserAddResponse failedBecause(String errorMessage) {
-    Objects.nonNull(errorMessage);
+    Objects.requireNonNull(errorMessage);
     return new WebApiUserAddResponse(false, null, errorMessage);
   }
 }

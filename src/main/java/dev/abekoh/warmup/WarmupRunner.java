@@ -1,6 +1,7 @@
 package dev.abekoh.warmup;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import dev.abekoh.warmup.config.WarmupProperty;
 import dev.abekoh.warmup.controllers.webapi.WebApiUserAddRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationArguments;
@@ -15,12 +16,19 @@ public class WarmupRunner implements ApplicationRunner {
 
   private final WebClient webClient;
 
-  public WarmupRunner(WebClient.Builder webClientBuilder) {
+  private final WarmupProperty warmupProperty;
+
+  public WarmupRunner(WebClient.Builder webClientBuilder, WarmupProperty warmupProperty) {
     this.webClient = webClientBuilder.baseUrl("http://localhost:8080/api/users").build();
+    this.warmupProperty = warmupProperty;
   }
 
   @Override
   public void run(ApplicationArguments args) throws Exception {
+    if (warmupProperty.getWarmupCount() == null || warmupProperty.getWarmupCount() <= 0) {
+      log.info("skip warmup");
+      return;
+    }
     var request =
         WebApiUserAddRequest.builder()
             .firstName("Taro")
@@ -30,13 +38,15 @@ public class WarmupRunner implements ApplicationRunner {
             .birthDate(1)
             .isDummy(true)
             .build();
+    log.info("start warmup");
     webClient
         .post()
         .contentType(MediaType.APPLICATION_JSON)
         .bodyValue(request)
         .retrieve()
         .bodyToMono(JsonNode.class)
-        .repeat(30000)
+        .repeat(warmupProperty.getWarmupCount())
         .blockLast();
+    log.info("finish warmup");
   }
 }

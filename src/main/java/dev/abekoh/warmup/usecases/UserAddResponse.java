@@ -11,7 +11,7 @@ import java.util.Objects;
 public class UserAddResponse {
   private final User user;
 
-  private UserAddResponse(User user) {
+  public UserAddResponse(User user) {
     Objects.requireNonNull(user);
     this.user = user;
   }

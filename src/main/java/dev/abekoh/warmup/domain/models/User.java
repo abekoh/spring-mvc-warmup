@@ -18,7 +18,7 @@ public class User {
 
   private final boolean isDummy;
 
-  private User(UserId userId, Name name, Birthday birthday, boolean isDummy) {
+  public User(UserId userId, Name name, Birthday birthday, boolean isDummy) {
     Objects.nonNull(userId);
     Objects.nonNull(name);
     Objects.nonNull(birthday);

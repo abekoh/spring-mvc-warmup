@@ -1,9 +1,11 @@
 package dev.abekoh.warmup.controllers.webapi;
 
 import dev.abekoh.warmup.usecases.UserAddResponse;
+import lombok.Data;
 
 import java.util.Objects;
 
+@Data
 public class WebApiUserAddResponse {
 
   private final boolean isSucceeded;
@@ -12,7 +14,7 @@ public class WebApiUserAddResponse {
 
   private final String errorMessage;
 
-  private WebApiUserAddResponse(
+  public WebApiUserAddResponse(
       boolean isSucceeded, UserAddResponse userAddResponse, String errorMessage) {
     this.isSucceeded = isSucceeded;
     this.userAddResponse = userAddResponse;

@@ -4,6 +4,7 @@ import json
 import random
 import requests
 from datetime import datetime
+import sys
 
 
 def generate_name_list(url):
@@ -20,11 +21,9 @@ FIRST_NAME_LIST = generate_name_list(
     "https://raw.githubusercontent.com/smashew/NameDatabases/master/NamesDatabases/first%20names/us.txt"
 )
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--dummy", help="with dummy request", action="store_true")
-    args = parser.parse_args()
-    while True:
+
+def generate_request():
+    try:
         result = {}
         result["method"] = "POST"
         result["url"] = "http://localhost:30080/api/users"
@@ -41,3 +40,14 @@ if __name__ == "__main__":
         result["header"] = {"Content-Type": ["application/json"]}
         result["body"] = base64.b64encode(json.dumps(body_dic).encode()).decode()
         print(json.dumps(result))
+    except BrokenPipeError:
+        print("stop generating", file=sys.stderr)
+        sys.exit(0)
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--dummy", help="with dummy request", action="store_true")
+    args = parser.parse_args()
+    while True:
+        generate_request()

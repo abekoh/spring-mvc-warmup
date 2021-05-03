@@ -1,4 +1,4 @@
-package dev.abekoh.warmupsandbox;
+package dev.abekoh.warmup;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

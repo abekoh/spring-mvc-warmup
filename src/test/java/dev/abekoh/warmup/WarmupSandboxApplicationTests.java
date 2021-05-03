@@ -1,4 +1,4 @@
-package dev.abekoh.warmupsandbox;
+package dev.abekoh.warmup;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

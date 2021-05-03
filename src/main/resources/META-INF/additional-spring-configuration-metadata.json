@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "warmup.request-count",
+      "type": "java.lang.String",
+      "description": "ウォームアップ処理として、リクエストを叩く数."
+    }
+  ]
+}

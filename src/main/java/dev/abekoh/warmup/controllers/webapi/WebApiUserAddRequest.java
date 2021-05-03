@@ -1,9 +1,11 @@
 package dev.abekoh.warmup.controllers.webapi;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 
 @Data
+@Builder
 @ToString
 public class WebApiUserAddRequest {
 

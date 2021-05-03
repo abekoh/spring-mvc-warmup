@@ -1,6 +1,5 @@
 package dev.abekoh.warmup;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import dev.abekoh.warmup.config.WarmupProperty;
 import dev.abekoh.warmup.controllers.webapi.WebApiUserAddRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -44,7 +43,7 @@ public class WarmupRunner implements ApplicationRunner {
         .contentType(MediaType.APPLICATION_JSON)
         .bodyValue(request)
         .retrieve()
-        .bodyToMono(JsonNode.class)
+        .bodyToMono(Object.class) // 結果は使わないので適当なところにマッピング
         .repeat(warmupProperty.getRequestCount())
         .blockLast();
     log.info("finish warmup");

@@ -11,11 +11,11 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 @Slf4j
 @Component
-public class WarmingUpRunner implements ApplicationRunner {
+public class WarmupRunner implements ApplicationRunner {
 
   private final WebClient webClient;
 
-  public WarmingUpRunner(WebClient.Builder webClientBuilder) {
+  public WarmupRunner(WebClient.Builder webClientBuilder) {
     this.webClient = webClientBuilder.baseUrl("http://localhost:8080/api/users").build();
   }
 

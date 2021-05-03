@@ -3,11 +3,10 @@ package dev.abekoh.warmup.config;
 import dev.abekoh.warmup.controllers.webapi.WebApiUserAddRequest;
 import dev.abekoh.warmup.controllers.webapi.WebApiUserAddResponse;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.boot.context.event.ApplicationPreparedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
-import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Slf4j
@@ -16,11 +15,11 @@ public class WarmUpper {
 
   private final WebClient webClient;
 
-  public WarmUpper(WebClient.Builder webClientBuilder, ExchangeStrategies exchangeStrategies) {
-    this.webClient = webClientBuilder.exchangeStrategies(exchangeStrategies).build();
+  public WarmUpper(WebClient.Builder webClientBuilder) {
+    this.webClient = webClientBuilder.build();
   }
 
-  @EventListener(ApplicationReadyEvent.class)
+  @EventListener(ApplicationPreparedEvent.class)
   public void warmUp() {
     var resp =
         webClient

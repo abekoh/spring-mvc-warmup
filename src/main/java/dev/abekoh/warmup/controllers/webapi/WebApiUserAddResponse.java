@@ -1,6 +1,5 @@
 package dev.abekoh.warmup.controllers.webapi;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import dev.abekoh.warmup.usecases.UserAddResponse;
 import lombok.Data;
@@ -8,7 +7,6 @@ import lombok.Data;
 import java.util.Objects;
 
 @Data
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class WebApiUserAddResponse {
 

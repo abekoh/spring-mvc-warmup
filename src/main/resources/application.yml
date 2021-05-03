@@ -1,0 +1,7 @@
+spring:
+  jackson:
+    default-property-inclusion: non_null
+    visibility:
+      field: any
+      getter: none
+      setter: none

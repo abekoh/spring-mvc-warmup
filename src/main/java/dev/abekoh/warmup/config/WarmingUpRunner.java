@@ -21,18 +21,19 @@ public class WarmingUpRunner implements ApplicationRunner {
 
   @Override
   public void run(ApplicationArguments args) throws Exception {
+    var request =
+        WebApiUserAddRequest.builder()
+            .firstName("Taro")
+            .lastName("Yamada")
+            .birthYear(1970)
+            .birthMonth(1)
+            .birthDate(1)
+            .isDummy(true)
+            .build();
     webClient
         .post()
         .contentType(MediaType.APPLICATION_JSON)
-        .bodyValue(
-            WebApiUserAddRequest.builder()
-                .firstName("Kotaro")
-                .lastName("Abe")
-                .birthYear(1993)
-                .birthMonth(6)
-                .birthDate(25)
-                .isDummy(true)
-                .build())
+        .bodyValue(request)
         .retrieve()
         .bodyToMono(JsonNode.class)
         .repeat(30000)

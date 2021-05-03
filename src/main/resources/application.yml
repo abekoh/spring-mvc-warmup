@@ -1,6 +1,8 @@
 spring:
   main:
     cloud-platform: kubernetes
+  lifecycle:
+    timeout-per-shutdown-phase: 60s
 server:
   port: 8080
   shutdown: graceful

@@ -3,6 +3,7 @@ package dev.abekoh.warmup;
 import dev.abekoh.warmup.config.WarmupProperty;
 import dev.abekoh.warmup.controllers.webapi.WebApiUserAddRequest;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.http.MediaType;
@@ -17,8 +18,12 @@ public class WarmupRunner implements ApplicationRunner {
 
   private final WarmupProperty warmupProperty;
 
-  public WarmupRunner(WebClient.Builder webClientBuilder, WarmupProperty warmupProperty) {
-    this.webClient = webClientBuilder.baseUrl("http://localhost:8080/api/users").build();
+  public WarmupRunner(
+      WebClient.Builder webClientBuilder,
+      WarmupProperty warmupProperty,
+      @Value("${server.port}") Integer port) {
+    this.webClient =
+        webClientBuilder.baseUrl(String.format("http://localhost:%d/api/users", port)).build();
     this.warmupProperty = warmupProperty;
   }
 

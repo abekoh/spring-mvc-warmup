@@ -1,3 +1,5 @@
 spring:
   main:
     cloud-platform: kubernetes
+server:
+  port: 8080
